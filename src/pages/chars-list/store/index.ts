@@ -32,6 +32,7 @@ export type Character = {
 
 export class CharsListStore {
   searchValue = '';
+
   fetchData: Character[] = [];
   nextPage: string | null = null;
   prevPage: string | null = null;
@@ -50,7 +51,10 @@ export class CharsListStore {
     this.isLoading = true;
 
     try {
-      const response = await apiInstance.get<Response>('/character');
+      const params = this.searchValue ? { name: this.searchValue } : {};
+      const response = await apiInstance.get<Response>('/character', {
+        params,
+      });
 
       if (response.data) {
         runInAction(() => {

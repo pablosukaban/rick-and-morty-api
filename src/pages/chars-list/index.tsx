@@ -57,7 +57,7 @@ const CharsList = observer(() => {
       <SearchFilter
         value={store.searchValue}
         onChange={store.setSearchValue}
-        onClick={() => {}}
+        onClick={store.getCharacters}
       />
       <NetworkWrapper
         isLoading={store.isLoading}
