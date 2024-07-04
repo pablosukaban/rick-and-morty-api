@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { apiInstance } from '../../../shared/api/base';
+import { Character } from '../../../shared/api/models';
 
 type Response = {
   results: Character[];
@@ -9,25 +10,6 @@ type Response = {
     next: string | null;
     prev: string | null;
   };
-};
-
-type Location = {
-  name: string;
-};
-
-export type Character = {
-  created: string;
-  episode: string[];
-  gender: string;
-  id: number;
-  image: string;
-  location: Location;
-  name: string;
-  origin: Location;
-  species: string;
-  status: string;
-  type: string;
-  url: string;
 };
 
 export class CharsListStore {
