@@ -68,43 +68,21 @@ export class CharsListStore {
     }
   };
 
-  getNextPage = async () => {
-    if (!this.nextPage) return;
+  getCharactersByPage = async (pageType: 'prev' | 'next') => {
+    const page = pageType === 'prev' ? this.prevPage : this.nextPage;
+
+    if (!page) return;
 
     this.isLoading = true;
 
     try {
-      const response = await apiInstance.get<Response>(this.nextPage);
+      const response = await apiInstance.get<Response>(page);
 
       if (response.data) {
         runInAction(() => {
           this.fetchData = response.data.results;
           this.nextPage = response.data.info.next;
           this.prevPage = response.data.info.prev;
-        });
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      runInAction(() => {
-        this.isLoading = false;
-      });
-    }
-  };
-
-  getPrevPage = async () => {
-    if (!this.prevPage) return;
-
-    this.isLoading = true;
-
-    try {
-      const response = await apiInstance.get<Response>(this.prevPage);
-
-      if (response.data) {
-        runInAction(() => {
-          this.fetchData = response.data.results;
-          this.prevPage = response.data.info.prev;
-          this.nextPage = response.data.info.next;
         });
       }
     } catch (error) {

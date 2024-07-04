@@ -38,7 +38,7 @@ const CharsList = observer(() => {
             size='small'
             color='primary'
             variant='outlined'
-            onClick={store.getPrevPage}
+            onClick={() => store.getCharactersByPage('prev')}
             disabled={!store.prevPage}
           >
             Предыдущая страница
@@ -47,7 +47,7 @@ const CharsList = observer(() => {
             size='small'
             color='primary'
             variant='outlined'
-            onClick={store.getNextPage}
+            onClick={() => store.getCharactersByPage('next')}
             disabled={!store.nextPage}
           >
             Следующая страница
