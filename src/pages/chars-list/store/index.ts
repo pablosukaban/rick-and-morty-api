@@ -28,6 +28,8 @@ export type Character = {
 
 export class CharsListStore {
   fetchData: Character[] = [];
+  nextPage: string | null = null;
+  prevPage: string | null = null;
 
   isLoading = false;
 
@@ -48,6 +50,56 @@ export class CharsListStore {
       if (response.data) {
         runInAction(() => {
           this.fetchData = response.data.results;
+          this.nextPage = response.data.info.next;
+          this.prevPage = response.data.info.prev;
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      runInAction(() => {
+        this.isLoading = false;
+      });
+    }
+  };
+
+  getNextPage = async () => {
+    if (!this.nextPage) return;
+
+    this.isLoading = true;
+
+    try {
+      const response = await apiInstance.get<Response>(this.nextPage);
+
+      if (response.data) {
+        runInAction(() => {
+          this.fetchData = response.data.results;
+          this.nextPage = response.data.info.next;
+          this.prevPage = response.data.info.prev;
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      runInAction(() => {
+        this.isLoading = false;
+      });
+    }
+  };
+
+  getPrevPage = async () => {
+    if (!this.prevPage) return;
+
+    this.isLoading = true;
+
+    try {
+      const response = await apiInstance.get<Response>(this.prevPage);
+
+      if (response.data) {
+        runInAction(() => {
+          this.fetchData = response.data.results;
+          this.prevPage = response.data.info.prev;
+          this.nextPage = response.data.info.next;
         });
       }
     } catch (error) {
