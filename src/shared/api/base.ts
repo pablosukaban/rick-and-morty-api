@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const apiInstance = axios.create({
-  baseURL: 'https://rickandmortyapi.com/api',
+  baseURL: 'https://rickandmortyapi.com/api'
 });

@@ -18,57 +18,25 @@ const CharsItem = observer(() => {
 
   return (
     <Layout>
-      <Box
-        display={'flex'}
-        justifyContent={'space-between'}
-        alignItems={'center'}
-      >
-        <Typography variant='h2'>{store.fetchData?.name}</Typography>
-        <Button
-          size='small'
-          color='primary'
-          variant='outlined'
-          onClick={() => navigate('/')}
-        >
+      <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
+        <Typography variant="h2">{store.fetchData?.name}</Typography>
+        <Button size="small" color="primary" variant="outlined" onClick={() => navigate('/')}>
           Назад
         </Button>
       </Box>
-      <NetworkWrapper
-        isLoading={store.isLoading}
-        isEmpty={!store.fetchData}
-        variant='single'
-      >
+      <NetworkWrapper isLoading={store.isLoading} isEmpty={!store.fetchData} variant="single">
         <Box display={'flex'} gap={1}>
           <img src={store.fetchData?.image} alt={store.fetchData?.name} />
-          <Box
-            display={'flex'}
-            flexDirection={'column'}
-            justifyContent={'space-between'}
-            gap={1}
-          >
-            <Typography variant='h6'>
-              Gender: {store.fetchData?.gender}
-            </Typography>
-            <Typography variant='h6'>
-              Species: {store.fetchData?.species}
-            </Typography>
-            <Typography variant='h6'>
-              Status: {store.fetchData?.status}
-            </Typography>
+          <Box display={'flex'} flexDirection={'column'} justifyContent={'space-between'} gap={1}>
+            <Typography variant="h6">Gender: {store.fetchData?.gender}</Typography>
+            <Typography variant="h6">Species: {store.fetchData?.species}</Typography>
+            <Typography variant="h6">Status: {store.fetchData?.status}</Typography>
             {store.fetchData?.type && (
-              <Typography variant='h6'>
-                Type: {store.fetchData?.type}
-              </Typography>
+              <Typography variant="h6">Type: {store.fetchData?.type}</Typography>
             )}
-            <Typography variant='h6'>
-              Episodes count: {store.fetchData?.episode.length}
-            </Typography>
-            <Typography variant='h6'>
-              Origin: {store.fetchData?.origin.name}
-            </Typography>
-            <Typography variant='h6'>
-              Location: {store.fetchData?.location.name}
-            </Typography>
+            <Typography variant="h6">Episodes count: {store.fetchData?.episode.length}</Typography>
+            <Typography variant="h6">Origin: {store.fetchData?.origin.name}</Typography>
+            <Typography variant="h6">Location: {store.fetchData?.location.name}</Typography>
           </Box>
         </Box>
       </NetworkWrapper>

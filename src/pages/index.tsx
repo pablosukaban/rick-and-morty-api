@@ -7,8 +7,8 @@ const CharactersItem = lazy(() => import('./chars-item/'));
 const Routing = () => {
   return (
     <Routes>
-      <Route path='/' element={<CharactersList />} />
-      <Route path='/character/:id' element={<CharactersItem />} />
+      <Route path="/" element={<CharactersList />} />
+      <Route path="/character/:id" element={<CharactersItem />} />
     </Routes>
   );
 };

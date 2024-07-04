@@ -8,27 +8,20 @@ type SearchFilterProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const SearchFilter: FC<SearchFilterProps> = observer(
-  ({ onChange, value, onClick }) => {
-    return (
-      <Box display={'flex'} gap={1} mt={2} mb={2}>
-        <TextField
-          id='outlined-basic'
-          label='Имя персонажа'
-          variant='outlined'
-          value={value}
-          onChange={onChange}
-          fullWidth
-        />
-        <Button
-          size='small'
-          color='primary'
-          variant='outlined'
-          onClick={onClick}
-        >
-          Поиск
-        </Button>
-      </Box>
-    );
-  }
-);
+export const SearchFilter: FC<SearchFilterProps> = observer(({ onChange, value, onClick }) => {
+  return (
+    <Box display={'flex'} gap={1} mt={2} mb={2}>
+      <TextField
+        id="outlined-basic"
+        label="Имя персонажа"
+        variant="outlined"
+        value={value}
+        onChange={onChange}
+        fullWidth
+      />
+      <Button size="small" color="primary" variant="outlined" onClick={onClick}>
+        Поиск
+      </Button>
+    </Box>
+  );
+});

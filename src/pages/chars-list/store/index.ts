@@ -28,7 +28,7 @@ export class CharsListStore {
     next: null,
     prev: null,
     count: 0,
-    pages: 0,
+    pages: 0
   };
 
   isLoading = false;
@@ -47,7 +47,7 @@ export class CharsListStore {
     try {
       const params = this.searchValue ? { name: this.searchValue } : {};
       const response = await apiInstance.get<Response>('/character', {
-        params,
+        params
       });
 
       if (response.data) {
@@ -73,8 +73,8 @@ export class CharsListStore {
     try {
       const response = await apiInstance.get<Response>('/character', {
         params: {
-          page,
-        },
+          page
+        }
       });
 
       if (response.data) {
