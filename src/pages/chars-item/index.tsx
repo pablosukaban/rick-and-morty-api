@@ -14,7 +14,7 @@ const CharsItem = observer(() => {
 
   useEffect(() => {
     if (id) store.init(id);
-  }, []);
+  }, [store, id]);
 
   return (
     <Layout>

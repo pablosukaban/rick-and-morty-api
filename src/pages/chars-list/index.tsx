@@ -24,7 +24,7 @@ const CharsList = observer(() => {
 
   useEffect(() => {
     store.init();
-  }, []);
+  }, [store]);
 
   return (
     <Layout>
