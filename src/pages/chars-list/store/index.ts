@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { apiInstance } from '../../../shared/api/base';
 import { Character } from '../../../shared/api/models';
+import { ChangeEvent } from 'react';
 
 type Response = {
   results: Character[];
@@ -12,12 +13,23 @@ type Response = {
   };
 };
 
+type Pagination = {
+  next: string | null;
+  prev: string | null;
+  count: number;
+  pages: number;
+};
+
 export class CharsListStore {
   searchValue = '';
 
-  fetchData: Character[] = [];
-  nextPage: string | null = null;
-  prevPage: string | null = null;
+  charactersList: Character[] = [];
+  pagination: Pagination = {
+    next: null,
+    prev: null,
+    count: 0,
+    pages: 0,
+  };
 
   isLoading = false;
 
@@ -40,9 +52,8 @@ export class CharsListStore {
 
       if (response.data) {
         runInAction(() => {
-          this.fetchData = response.data.results;
-          this.nextPage = response.data.info.next;
-          this.prevPage = response.data.info.prev;
+          this.charactersList = response.data.results;
+          this.pagination = response.data.info;
         });
       }
     } catch (error) {
@@ -54,21 +65,22 @@ export class CharsListStore {
     }
   };
 
-  getCharactersByPage = async (pageType: 'prev' | 'next') => {
-    const page = pageType === 'prev' ? this.prevPage : this.nextPage;
-
+  getCharactersByPage = async (_event: ChangeEvent<unknown>, page: number) => {
     if (!page) return;
 
     this.isLoading = true;
 
     try {
-      const response = await apiInstance.get<Response>(page);
+      const response = await apiInstance.get<Response>('/character', {
+        params: {
+          page,
+        },
+      });
 
       if (response.data) {
         runInAction(() => {
-          this.fetchData = response.data.results;
-          this.nextPage = response.data.info.next;
-          this.prevPage = response.data.info.prev;
+          this.charactersList = response.data.results;
+          this.pagination = response.data.info;
         });
       }
     } catch (error) {

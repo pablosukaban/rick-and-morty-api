@@ -6,6 +6,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Pagination,
   Typography,
 } from '@mui/material';
 import { observer } from 'mobx-react-lite';
@@ -33,26 +34,10 @@ const CharsList = observer(() => {
         alignItems={'center'}
       >
         <Typography variant='h2'>Персонажи</Typography>
-        <Box display={'flex'} gap={1}>
-          <Button
-            size='small'
-            color='primary'
-            variant='outlined'
-            onClick={() => store.getCharactersByPage('prev')}
-            disabled={!store.prevPage}
-          >
-            Предыдущая страница
-          </Button>
-          <Button
-            size='small'
-            color='primary'
-            variant='outlined'
-            onClick={() => store.getCharactersByPage('next')}
-            disabled={!store.nextPage}
-          >
-            Следующая страница
-          </Button>
-        </Box>
+        <Pagination
+          count={store.pagination?.pages}
+          onChange={store.getCharactersByPage}
+        />
       </Box>
       <SearchFilter
         value={store.searchValue}
@@ -61,11 +46,11 @@ const CharsList = observer(() => {
       />
       <NetworkWrapper
         isLoading={store.isLoading}
-        isEmpty={!store.fetchData.length}
+        isEmpty={!store.charactersList || !store.charactersList.length}
         variant='multiple'
       >
         <Grid container spacing={2}>
-          {store.fetchData.map((character) => (
+          {(store.charactersList || []).map((character) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={character.id}>
               <Card sx={{ height: '100%' }}>
                 <CardMedia
