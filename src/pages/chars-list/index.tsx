@@ -15,6 +15,7 @@ import { CharsListStore } from './store';
 import NetworkWrapper from '../../shared/components/NetworkWrapper';
 import Layout from '../../shared/components/Layout';
 import { useNavigate } from 'react-router-dom';
+import { SearchFilter } from '../../shared/features/SearchFilter';
 
 const CharsList = observer(() => {
   const store = useInstance(CharsListStore);
@@ -53,7 +54,11 @@ const CharsList = observer(() => {
           </Button>
         </Box>
       </Box>
-
+      <SearchFilter
+        value={store.searchValue}
+        onChange={store.setSearchValue}
+        onClick={() => {}}
+      />
       <NetworkWrapper
         isLoading={store.isLoading}
         isEmpty={!store.fetchData.length}

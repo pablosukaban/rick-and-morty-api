@@ -31,6 +31,7 @@ export type Character = {
 };
 
 export class CharsListStore {
+  searchValue = '';
   fetchData: Character[] = [];
   nextPage: string | null = null;
   prevPage: string | null = null;
@@ -113,5 +114,9 @@ export class CharsListStore {
         this.isLoading = false;
       });
     }
+  };
+
+  setSearchValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.searchValue = event.target.value;
   };
 }
