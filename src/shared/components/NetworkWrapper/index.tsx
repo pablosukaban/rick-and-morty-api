@@ -2,7 +2,7 @@ import { Grid, Skeleton, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 
 const SingleVariant = () => {
-  return <Skeleton variant='rectangular' height={140} />;
+  return <Skeleton variant='rectangular' height={320} />;
 };
 
 const MultipleVariant = () => {
