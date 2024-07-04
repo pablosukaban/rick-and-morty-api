@@ -11,6 +11,10 @@ type Response = {
   };
 };
 
+type Location = {
+  name: string;
+};
+
 export type Character = {
   created: string;
   episode: string[];
