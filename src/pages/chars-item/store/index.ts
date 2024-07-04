@@ -11,15 +11,15 @@ export class CharsItemStore {
 
   isLoading = false;
 
-  init = async () => {
-    this.getCharacter();
+  init = async (id: string) => {
+    this.getCharacter(id);
   };
 
-  getCharacter = async () => {
+  getCharacter = async (id: string) => {
     this.isLoading = true;
 
     try {
-      const response = await apiInstance.get<Character>(`/character/1`);
+      const response = await apiInstance.get<Character>(`/character/${id}`);
 
       if (response.data) {
         runInAction(() => {

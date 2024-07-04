@@ -2,12 +2,14 @@ import { observer } from 'mobx-react-lite';
 import { useInstance } from 'react-ioc';
 import { CharsItemStore } from './store';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const CharsItem = observer(() => {
   const store = useInstance(CharsItemStore);
+  const { id } = useParams();
 
   useEffect(() => {
-    store.init();
+    if (id) store.init(id);
   }, []);
 
   if (store.isLoading) {
