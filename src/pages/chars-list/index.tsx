@@ -5,7 +5,6 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Container,
   Grid,
   Typography,
 } from '@mui/material';
@@ -14,16 +13,19 @@ import { useEffect } from 'react';
 import { useInstance } from 'react-ioc';
 import { CharsListStore } from './store';
 import NetworkWrapper from '../../shared/components/NetworkWrapper';
+import Layout from '../../shared/components/Layout';
+import { useNavigate } from 'react-router-dom';
 
 const CharsList = observer(() => {
   const store = useInstance(CharsListStore);
+  const navigate = useNavigate();
 
   useEffect(() => {
     store.init();
   }, []);
 
   return (
-    <Container maxWidth='md'>
+    <Layout>
       <Box
         display={'flex'}
         justifyContent={'space-between'}
@@ -55,6 +57,7 @@ const CharsList = observer(() => {
       <NetworkWrapper
         isLoading={store.isLoading}
         isEmpty={!store.fetchData.length}
+        variant='multiple'
       >
         <Grid container spacing={2}>
           {store.fetchData.map((character) => (
@@ -79,7 +82,7 @@ const CharsList = observer(() => {
                     size='small'
                     color='primary'
                     variant='outlined'
-                    href={`/character/${character.id}`}
+                    onClick={() => navigate(`/character/${character.id}`)}
                   >
                     Перейти
                   </Button>
@@ -89,7 +92,7 @@ const CharsList = observer(() => {
           ))}
         </Grid>
       </NetworkWrapper>
-    </Container>
+    </Layout>
   );
 });
 
