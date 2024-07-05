@@ -8,7 +8,7 @@ type SearchFilterProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const SearchFilter: FC<SearchFilterProps> = observer(({ onChange, value, onClick }) => {
+const SearchFilter: FC<SearchFilterProps> = observer(({ onChange, value, onClick }) => {
   return (
     <Box display={'flex'} gap={1} mt={2} mb={2}>
       <TextField
@@ -25,3 +25,5 @@ export const SearchFilter: FC<SearchFilterProps> = observer(({ onChange, value, 
     </Box>
   );
 });
+
+export default SearchFilter;

@@ -2,7 +2,7 @@ import { Box, Grid, Pagination, Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import { useInstance } from 'react-ioc';
-import { SearchFilter } from '../../features/SearchFilter';
+import SearchFilter from '../../features/SearchFilter';
 import Layout from '../../shared/ui/Layout';
 import NetworkWrapper from '../../shared/ui/NetworkWrapper';
 import { CharsListStore } from './store';
