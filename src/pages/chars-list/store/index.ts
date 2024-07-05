@@ -33,12 +33,10 @@ export class CharsListStore {
         params
       });
 
-      if (response.data) {
-        runInAction(() => {
-          this.charactersList = response.data.results;
-          this.pagination = response.data.info;
-        });
-      }
+      runInAction(() => {
+        this.charactersList = response.data.results;
+        this.pagination = response.data.info;
+      });
     } catch (error) {
       console.error(error);
     } finally {
@@ -60,12 +58,10 @@ export class CharsListStore {
         }
       });
 
-      if (response.data) {
-        runInAction(() => {
-          this.charactersList = response.data.results;
-          this.pagination = response.data.info;
-        });
-      }
+      runInAction(() => {
+        this.charactersList = response.data.results;
+        this.pagination = response.data.info;
+      });
     } catch (error) {
       console.error(error);
     } finally {

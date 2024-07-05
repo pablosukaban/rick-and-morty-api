@@ -21,11 +21,9 @@ export class CharsItemStore {
     try {
       const response = await apiInstance.get<Character>(`/character/${id}`);
 
-      if (response.data) {
-        runInAction(() => {
-          this.fetchData = response.data;
-        });
-      }
+      runInAction(() => {
+        this.fetchData = response.data;
+      });
     } catch (error) {
       console.error(error);
     } finally {
