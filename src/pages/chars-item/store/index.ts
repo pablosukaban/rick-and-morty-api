@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx';
 import { apiInstance } from '../../../shared/api/base';
-import { Character } from '../../chars-list/store';
+import { Character } from '../../../shared/api/models';
 
 export class CharsItemStore {
   constructor() {

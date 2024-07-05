@@ -16,7 +16,7 @@ import { CharsListStore } from './store';
 import NetworkWrapper from '../../shared/components/NetworkWrapper';
 import Layout from '../../shared/components/Layout';
 import { useNavigate } from 'react-router-dom';
-import { SearchFilter } from '../../shared/features/SearchFilter';
+import { SearchFilter } from '../../features/SearchFilter';
 
 const CharsList = observer(() => {
   const store = useInstance(CharsListStore);
