@@ -37,7 +37,7 @@ export class CharsListStore {
     makeAutoObservable(this);
   }
 
-  init = async () => {
+  init = () => {
     this.getCharacters();
   };
 

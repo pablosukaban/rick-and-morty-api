@@ -11,7 +11,7 @@ export class CharsItemStore {
 
   isLoading = false;
 
-  init = async (id: string) => {
+  init = (id: string) => {
     this.getCharacter(id);
   };
 
