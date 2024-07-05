@@ -1,21 +1,7 @@
-import { Grid, Skeleton, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { ReactNode } from 'react';
-
-const SingleVariant = () => {
-  return <Skeleton variant="rectangular" height={320} />;
-};
-
-const MultipleVariant = () => {
-  return (
-    <Grid container spacing={2}>
-      {Array.from({ length: 20 }).map((_, i) => (
-        <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
-          <Skeleton variant="rectangular" height={140} />
-        </Grid>
-      ))}
-    </Grid>
-  );
-};
+import SingleVariant from './ui/SingleVariant';
+import MultipleVariant from './ui/MultipleVariant';
 
 const NetworkWrapper = ({
   children,
