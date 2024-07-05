@@ -3,9 +3,9 @@ import { useInstance } from 'react-ioc';
 import { CharsItemStore } from './store';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Layout from '../../shared/components/Layout';
+import Layout from '../../shared/ui/Layout';
 import { Box, Button, Typography } from '@mui/material';
-import NetworkWrapper from '../../shared/components/NetworkWrapper';
+import NetworkWrapper from '../../shared/ui/NetworkWrapper';
 
 const CharsItem = observer(() => {
   const store = useInstance(CharsItemStore);
