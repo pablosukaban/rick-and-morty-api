@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-import { apiInstance } from '../../../shared/api/base';
-import { Character } from '../../../shared/api/models';
+import { apiInstance } from '../../../shared/api/';
 import { ChangeEvent } from 'react';
+import { Character } from '../../../shared/api';
 
 type Response = {
   results: Character[];
