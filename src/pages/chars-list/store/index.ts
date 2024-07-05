@@ -1,24 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-import { apiInstance } from '../../../shared/api/';
+import { apiInstance, GetCharactersResponse, Pagination } from '../../../shared/api/';
 import { ChangeEvent } from 'react';
 import { Character } from '../../../shared/api';
-
-type Response = {
-  results: Character[];
-  info: {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
-  };
-};
-
-type Pagination = {
-  next: string | null;
-  prev: string | null;
-  count: number;
-  pages: number;
-};
 
 export class CharsListStore {
   searchValue = '';
@@ -46,7 +29,7 @@ export class CharsListStore {
 
     try {
       const params = this.searchValue ? { name: this.searchValue } : {};
-      const response = await apiInstance.get<Response>('/character', {
+      const response = await apiInstance.get<GetCharactersResponse>('/character', {
         params
       });
 
@@ -71,7 +54,7 @@ export class CharsListStore {
     this.isLoading = true;
 
     try {
-      const response = await apiInstance.get<Response>('/character', {
+      const response = await apiInstance.get<GetCharactersResponse>('/character', {
         params: {
           page
         }

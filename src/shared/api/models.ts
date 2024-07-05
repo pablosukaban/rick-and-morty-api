@@ -16,3 +16,20 @@ export type Character = {
   type: string;
   url: string;
 };
+
+export type GetCharactersResponse = {
+  results: Character[];
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+};
+
+export type Pagination = {
+  next: string | null;
+  prev: string | null;
+  count: number;
+  pages: number;
+};
