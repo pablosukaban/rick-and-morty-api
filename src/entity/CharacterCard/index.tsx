@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { Character } from '../../../shared/api';
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { observer } from 'mobx-react-lite';
+import { Character } from '../../shared/api';
 
 type CharacterCardProps = {
   character: Character;
